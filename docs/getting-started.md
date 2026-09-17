@@ -98,6 +98,8 @@ The simulator uses actual local TLS sockets but **simulates** the controller. It
 
 ## Documentation
 
+- [Consolidated roadmap: SD/RTC, recording handover and event visualization](roadmap.md)
+
 - [Protocol](protocol.md), [recording format](recording-format.md), [security](security.md)
 - [External tools and adapter interface](external-tools.md)
 - [Specification review and decisions](spec-review.md)

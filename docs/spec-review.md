@@ -2,6 +2,8 @@
 
 The original specification is internally coherent. The later request to use **Zephyr** supersedes the ESP-IDF/FreeRTOS requirement. Firmware uses Zephyr native CAN, kernel queues/threads, networking/TLS sockets and settings. ESP-IDF is not an application dependency; Espressif's HAL/radio libraries are Zephyr dependencies with their own licensing.
 
+This document describes the implemented baseline. The [consolidated roadmap](roadmap.md) records the subsequent SD/RTC and semantic timeline extensions. In particular, its planned passive-logging disconnect behavior supersedes decision 4 as a future target; current firmware still stops capture on disconnect.
+
 Decisions made where the specification left room:
 
 1. Pin a Zephyr development commit containing XIAO C5 and native TWAI-FD support. Do not modify the user's existing Zephyr checkout. Build in a separate workspace. Stable-release qualification remains future work.

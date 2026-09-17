@@ -1,5 +1,7 @@
 # Known limits
 
+These are current implementation limits. Planned SD/RTC, recording handover and event visualization are consolidated in the [roadmap](roadmap.md); they are not yet implemented.
+
 - **No hardware tests yet.** Successful compilation and host simulations do not prove boot, Wi-Fi, CAN electrical behavior, listen-only silence, FD bit timing or sustained throughput.
 - Zephyr is pinned to a development snapshot containing the new C5 CAN FD driver. Physical qualification and review of that upstream driver remain necessary.
 - One CAN channel; no galvanic isolation. No microSD, USB operational transport, replay-to-CAN, cloud, bootloader/actuator support or automatic diagnosis.
