@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.20.0)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(wireless_can)
+if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/credentials/device_credentials.h)
+  message(FATAL_ERROR "Run tools/provision.py before building; there are no universal credentials")
+endif()
+target_include_directories(app PRIVATE credentials src)
+target_sources(app PRIVATE src/main.c src/wire.c src/capture.c src/network.c src/wifi_config.c)

@@ -1,0 +1,14 @@
+{"type": "metadata", "pc_receipt_ns": 1789550805329806000, "data": {"format": "wireless-can-jsonl", "version": 1, "synthetic": true, "description": "Generated fixture, not physical CAN", "session": 1, "configuration": {"capture_filter": "all_standard_and_extended", "hardware_filters": null, "timestamp_method": "synthetic"}}}
+{"type": "rx", "pc_receipt_ns": 1700000000000000000, "data": {"identifier": 256, "data": "0000580200000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 1, "timestamp_us": 0, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000010000000, "data": {"identifier": 256, "data": "0100590201000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 2, "timestamp_us": 10000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000020000000, "data": {"identifier": 256, "data": "02005a0200000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 3, "timestamp_us": 20000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000030000000, "data": {"identifier": 256, "data": "03005b0201000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 4, "timestamp_us": 30000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000040000000, "data": {"identifier": 256, "data": "04005c0200000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 5, "timestamp_us": 40000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000050000000, "data": {"identifier": 256, "data": "05005d0201000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 6, "timestamp_us": 50000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000060000000, "data": {"identifier": 256, "data": "06005e0200000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 7, "timestamp_us": 60000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000070000000, "data": {"identifier": 256, "data": "07005f0201000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 8, "timestamp_us": 70000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000080000000, "data": {"identifier": 256, "data": "0800600200000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 9, "timestamp_us": 80000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000090000000, "data": {"identifier": 256, "data": "0900610201000000", "flags": 0, "dlc": 8, "channel": 0, "sequence": 10, "timestamp_us": 90000, "session": 1}}
+{"type": "rx", "pc_receipt_ns": 1700000000100000000, "data": {"identifier": 74565, "data": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f", "flags": 7, "dlc": 15, "channel": 0, "sequence": 12, "timestamp_us": 100000, "session": 1}}
+{"type": "gap", "pc_receipt_ns": 1700000000100000000, "data": {"missing_sequences": 1, "session": 1}}
+{"type": "status", "pc_receipt_ns": 1700000000100000000, "data": {"queue_drops": 1, "hardware_rx_losses": null, "synthetic": true}}

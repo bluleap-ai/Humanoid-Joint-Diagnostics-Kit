@@ -1,0 +1,25 @@
+[1/9] Building C object CMakeFiles/app.dir/src/wifi_config.c.obj
+[2/9] Building C object CMakeFiles/app.dir/src/main.c.obj
+[3/9] Building C object CMakeFiles/app.dir/src/network.c.obj
+[4/9] Linking C static library app/libapp.a
+[5/9] Linking C executable zephyr/zephyr_pre0.elf; Logical command for additional byproducts on target: zephyr_pre0
+[6/9] Generating linker.cmd
+[7/9] Generating isr_tables.c, isr_tables_vt.ld, isr_tables_swi.ld
+[8/9] Building C object zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+[9/9] Linking C executable zephyr/zephyr.elf
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      803456 B    8388352 B      9.58%
+     sram0_0_seg:      345984 B     378384 B     91.44%
+     irom0_0_seg:      546176 B         8 MB      6.51%
+     drom0_0_seg:      672384 B         8 MB      8.02%
+      lp_ram_seg:          36 B      15584 B      0.23%
+ lp_reserved_seg:           0 B         24 B      0.00%
+        IDT_LIST:           0 B         8 KB      0.00%
+Generating files from /Users/kelvinm/projects/Humanoid-Joint-Diag-Kit/build/zephyr/zephyr.elf for board: xiao_esp32c5/esp32c5/hpcore
+esptool v5.3.0
+Creating ESP32-C5 image...
+Image has only RAM segments visible. ROM segments are hidden and SHA256 digest is not appended.
+Note: Inserting 12 bytes padding between pmp_soc_region_area and .flash.rodata_end
+Note: Inserting 4 bytes padding between net_buf_pool_area and net_if_area
+Merged 32 ELF sections.
+Successfully created ESP32-C5 image.

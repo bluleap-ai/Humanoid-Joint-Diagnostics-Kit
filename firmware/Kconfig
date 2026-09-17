@@ -1,0 +1,13 @@
+mainmenu "Wireless CAN tool"
+source "Kconfig.zephyr"
+config WCAN_RX_DEPTH
+    int "Internal RAM receive records"
+    default 128
+    range 16 1024
+config WCAN_SLNT
+    bool "GPIO25 connected to CAN Pal SLNT"
+    default y
+config WCAN_TX_EVENT_DEPTH
+    int "TX outcome queue depth"
+    default 32
+    range 4 128

@@ -1,0 +1,15 @@
+VERSION "Synthetic test data; no actuator protocol"
+NS_ :
+BS_:
+BU_: Source PC
+BO_ 256 Status: 8 Source
+ SG_ Counter : 0|16@1+ (1,0) [0|65535] "" PC
+ SG_ Temperature : 16|16@1- (0.1,-40) [-3316.8|3236.7] "degC" PC
+ SG_ Mode : 32|8@1+ (1,0) [0|255] "" PC
+BO_ 512 Multiplexed: 8 Source
+ SG_ Selector M : 0|8@1+ (1,0) [0|255] "" PC
+ SG_ Speed m1 : 8|16@1+ (0.5,0) [0|32767.5] "rpm" PC
+ SG_ Torque m2 : 8|16@1- (0.01,0) [-327.68|327.67] "Nm" PC
+BO_ 768 BigEndian: 2 Source
+ SG_ Signed : 7|16@0- (2,1) [-65535|65535] "unit" PC
+VAL_ 256 Mode 0 "Idle" 1 "Running";

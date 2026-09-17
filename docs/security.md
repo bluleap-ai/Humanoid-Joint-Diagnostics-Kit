@@ -1,0 +1,13 @@
+# Protected sessions and security boundary
+
+V1 uses standard mutual TLS 1.2 (Zephyr/Mbed TLS on device, Python/OpenSSL on PC). The enabled firmware suite is ECDHE-ECDSA with AES-128-GCM/SHA-256. Each device has its own CA and P-256 certificates. Firmware requires client certificate verification; PC verifies the CA chain and the provisioned DNS identity even when connecting by manual IP. There is no insecure network-member bypass, custom encryption, or shared production password.
+
+Private provisioning files are created outside recordings/logs and excluded from version control. The device certificate/private key and AP passphrase are embedded at build time. Station credentials are stored in NVS. Physical flash extraction is outside this prototype's protection: secure boot, flash encryption, hardware-backed keys and production provisioning are **not implemented**. Do not distribute credential-bearing build artifacts.
+
+The embedded device has no trusted wall clock. Its Mbed TLS certificate date checking is currently disabled; certificate signatures/chain and required peer possession still authenticate the session. Device-side expiry/revocation is therefore **not enforced**. Host certificate date/identity checks remain enabled. Certificates use a broad validity interval and a unique CA; rotate compromised credentials by generating a new complete set and reflashing. The generator discards the CA signing key, so additional operators require a planned reprovisioning flow. This is documented prototype scope, not a claim of production security review.
+
+Only one authenticated connection is serviced at a time. A small listener backlog may queue another connection, but it has no CAN authority until the first session is fully torn down and it completes HELLO. Sessions time out without complete commands, and active transmission has a separate device lease. Malformed requests close/reject; request IDs prevent duplicate execution within a connection. No automatic reconnection/retry of uncertain CAN commands occurs.
+
+Denial of service on the local radio or listener is possible. A malicious holder of the operator certificate has control permission; TLS does not distinguish individual CAN command authority. Do not expose the service to the public internet. Wi-Fi membership alone never grants transmission access.
+
+Automated host tests verify real TLS against the simulator, missing client certificate rejection and wrong server identity rejection. These tests do not validate Mbed TLS on the physical board, certificate parsing under memory pressure, or physical key protection. Those checks are pending.

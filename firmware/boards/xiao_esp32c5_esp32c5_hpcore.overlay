@@ -1,0 +1,17 @@
+#include <zephyr/dt-bindings/pinctrl/esp32c5-pinctrl.h>
+/ {
+    aliases { canbus = &twai0; };
+    zephyr,user { slnt-gpios = <&gpio0 25 GPIO_ACTIVE_HIGH>; recovery-gpios = <&gpio0 28 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; };
+};
+&uart0 { status = "disabled"; };
+&spi2 { status = "disabled"; };
+&i2c0 { status = "disabled"; };
+&ieee802154 { status = "disabled"; };
+&esp32_bt_hci { status = "disabled"; };
+&pinctrl {
+    can_pins: can_pins {
+        tx { pinmux = <TWAI0_TX_GPIO11>; output-high; };
+        rx { pinmux = <TWAI0_RX_GPIO12>; bias-pull-up; };
+    };
+};
+&twai0 { status = "okay"; pinctrl-0 = <&can_pins>; pinctrl-names = "default"; bitrate = <500000>; sample-point = <875>; bitrate-data = <2000000>; sample-point-data = <800>; };

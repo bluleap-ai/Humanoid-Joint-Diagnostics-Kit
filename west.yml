@@ -1,0 +1,9 @@
+manifest:
+  projects:
+    - name: zephyr
+      url: https://github.com/zephyrproject-rtos/zephyr
+      revision: 737426a187da4b58222665f6427646e092fa9275
+      import:
+        name-allowlist: [hal_espressif, mbedtls, tf-psa-crypto, zcbor]
+  self:
+    path: wireless-can-tool
