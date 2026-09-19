@@ -1,6 +1,6 @@
 # Product roadmap
 
-Updated 2026-09-17. This is the consolidated plan for the agreed product direction; linked issues hold implementation acceptance criteria. It does **not** describe all features as available today. Setup remains in [getting-started.md](getting-started.md), with current evidence in [testing.md](testing.md).
+Updated 2026-09-19. This is the consolidated plan for the agreed product direction; linked issues hold implementation acceptance criteria. It does **not** describe all features as available today. Setup remains in [getting-started.md](getting-started.md), with current evidence in [testing.md](testing.md).
 
 ## 1. Purpose and current baseline
 
@@ -23,15 +23,16 @@ The pinned Zephyr is a development snapshot. Internal SRAM link allocation is 91
 
 | Component | Selection/status | Interface and allocation |
 |---|---|---|
-| Processor | XIAO ESP32-C5, available per user | Zephyr; USB only power/flashing/debug |
+| Processor | XIAO ESP32-C5, available per user | Zephyr; external 5V/VBUS input or USB power/flashing/debug; see power-source precautions in the wiring picture |
 | CAN | Adafruit CAN Pal 5708, available per user | TX D6/GPIO11; RX D7/GPIO12; SLNT D2/GPIO25 |
 | SD breakout | Adafruit 4682 selected; possession/testing unconfirmed | SPI: CLK D8/GPIO8, SO D9/GPIO9, SI D10/GPIO10, CS D1/GPIO0 |
-| Card detection | Optional | DET D0/GPIO1; verify exact breakout behavior |
+| Card detection | Optional | DET D0/GPIO1; Adafruit documents high = card inserted, low = absent; verify on hardware |
 | microSD card | Exact model/capacity pending | Qualify filesystem, sustained writes, write pauses and endurance |
-| RTC breakout | User will select module | Proposed I2C SDA D4/GPIO23, SCL D5/GPIO24; no alarm pin reserved |
+| RTC breakout | Nshop DS3231 module (6W68) selected; battery/charge circuit and testing unconfirmed | 3.3 V VCC; I2C SDA D4/GPIO23, SCL D5/GPIO24; no alarm pin reserved |
+| Power converter | Hshop DC-DC Power Supply 5VDC 1A (HS1436) selected; testing unconfirmed | Stated 5.5–32 V input, 4.5–5 V output, max 1 A; OUT to XIAO 5V, shared GND |
 | Reference CAN equipment | Availability unconfirmed | Known numbered source and ACK-capable peer for physical tests |
 
-The SD breakout requires 3.3 V power/logic; native SPI is the selected card interface. Qualify a 20 MHz operating target after low-speed initialization; it is not a throughput guarantee. Check power headroom, wiring, signal integrity and combined Wi-Fi/CAN/SD load. RTC voltage, pull-ups, address, battery/charging circuit and Zephyr driver remain selection gates. Keep CAN termination, grounding and reset-silence requirements in [wiring.md](wiring.md).
+The SD breakout requires 3.3 V power/logic; native SPI is the selected card interface. Qualify a 20 MHz operating target after low-speed initialization; it is not a throughput guarantee. Check power headroom, wiring, signal integrity and combined Wi-Fi/CAN/SD load. The selected DS3231 uses address 0x68 and 3.3 V VCC here; actual module pull-ups, battery/charging circuit and Zephyr driver integration still need qualification. See the [top-view wiring picture, selected module sources and power precautions](hardware-block-diagram.md). Keep CAN termination, grounding and reset-silence requirements in [wiring.md](wiring.md).
 
 References: [SD breakout](https://www.adafruit.com/product/4682), [SD pinouts](https://learn.adafruit.com/adafruit-microsd-spi-sdio/pinouts), [XIAO pin map](https://wiki.seeedstudio.com/xiao_esp32c5_getting_started/). These are selected/proposed connections, not a hardware validation report.
 
@@ -88,7 +89,7 @@ SD reads/writes do not require an RTC. The optional battery-backed RTC supplies 
 - Support explicit authenticated PC time setting without requiring internet/NTP. Show calendar time only when trustworthy; keep PC receipt time separate.
 - With absent/unset/failed RTC, continue logging using session/segment identities and relative time. Expose unknown UTC; do not manufacture a valid date.
 
-RTC implementation waits for the user's breakout selection; recording format and time-state design can proceed first.
+The user selected the Nshop DS3231 breakout on 2026-09-19. Implementation still requires module inspection, battery/charge-path qualification and driver integration; recording format and time-state design can proceed independently.
 
 ## 6. From CAN traffic to an event timeline
 
@@ -145,7 +146,7 @@ Physical qualification must use numbered CAN payloads and record source counts, 
 
 Pending inputs/decisions:
 
-- RTC breakout and safe backup battery, exact microSD model/capacity and reference CAN equipment.
+- Safe RTC backup-battery/charging arrangement for the selected Nshop DS3231, exact microSD model/capacity and reference CAN equipment; measured power budget for the selected Hshop converter and XIAO 3V3 supply.
 - Actual authorized DBC, device/firmware version and semantic event definitions.
 - Acceptable power-loss window, retention/overwrite policy, final queue sizes and recorder lease/sync intervals after measurement.
 - Visualization technology and any separately verified external-tool adapter.

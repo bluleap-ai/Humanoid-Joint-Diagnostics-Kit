@@ -1,5 +1,7 @@
 # Wiring and reset behavior
 
+For the selected XIAO, CAN Pal, microSD, DS3231 RTC and DC-DC power modules, see the [top-view wiring picture and complete connection table](hardware-block-diagram.md). SD and RTC remain planned firmware extensions.
+
 Verified against the [Seeed XIAO ESP32-C5 pin map](https://wiki.seeedstudio.com/xiao_esp32c5_getting_started/) and the pinned Zephyr board connector definition:
 
 | XIAO | CAN Pal | Firmware |
